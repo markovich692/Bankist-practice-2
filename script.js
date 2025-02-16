@@ -36,5 +36,8 @@ const navLinks = document.querySelector('.nav__links');
 
 navLinks.addEventListener('click', function (e) {
   //Guard Clause
-  if (!e.target.classList.contains('.nav__link')) return;
+
+  if (!e.target.classList.contains('nav__link')) return;
+
+  const section = e.target.getAttribute('href').slice(1);
 });

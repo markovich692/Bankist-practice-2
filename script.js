@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const navLinks = document.querySelector('.nav__links');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -32,12 +33,18 @@ document.addEventListener('keydown', function (e) {
 });
 
 //Implements smooth scrolling
-const navLinks = document.querySelector('.nav__links');
 
 navLinks.addEventListener('click', function (e) {
+  e.preventDefault();
   //Guard Clause
-
   if (!e.target.classList.contains('nav__link')) return;
 
-  const section = e.target.getAttribute('href').slice(1);
+  const scrollToSection = e.target.getAttribute('href');
+
+  console.log(scrollToSection);
+  console.log(document.querySelector(scrollToSection));
+
+  document
+    .querySelector(scrollToSection)
+    .scrollIntoView({ behavior: 'smooth' });
 });

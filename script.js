@@ -35,5 +35,6 @@ document.addEventListener('keydown', function (e) {
 const navLinks = document.querySelector('.nav__links');
 
 navLinks.addEventListener('click', function (e) {
-  console.log(e.target);
+  //Guard Clause
+  if (!e.target.classList.contains('.nav__link')) return;
 });

@@ -30,3 +30,10 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+//Implements smooth scrolling
+const navLinks = document.querySelector('.nav__links');
+
+navLinks.addEventListener('click', function (e) {
+  console.log(e.target);
+});

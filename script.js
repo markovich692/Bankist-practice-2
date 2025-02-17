@@ -7,7 +7,9 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
 const navLinks = document.querySelector('.nav__links');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -34,6 +36,7 @@ document.addEventListener('keydown', function (e) {
 
 //Implements smooth scrolling
 
+//Nav links
 navLinks.addEventListener('click', function (e) {
   e.preventDefault();
   //Guard Clause
@@ -47,4 +50,14 @@ navLinks.addEventListener('click', function (e) {
   document
     .querySelector(scrollToSection)
     .scrollIntoView({ behavior: 'smooth' });
+});
+
+//Learn more
+
+btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault;
+
+  section1.scrollIntoView({
+    behavior: 'smooth',
+  });
 });

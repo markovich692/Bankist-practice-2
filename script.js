@@ -9,7 +9,9 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const navLinks = document.querySelector('.nav__links');
+const nav = document.querySelector('.nav');
 const section1 = document.querySelector('#section--1');
+const header = document.querySelector('.header');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -57,31 +59,21 @@ btnScrollTo.addEventListener('click', function (e) {
   });
 });
 
-//Implements nice effect on hover of the nav links
-const nav = document.querySelector('.nav');
+//Sticky navigation
+const navHeight = nav.getBoundingClientRect().height;
 
-//Adds data attributes to the nav links
-document.querySelectorAll('.nav__link').forEach(function (el, i) {
-  el.setAttribute('data-number', i);
-});
-
-//Change the opacity of the links on hover
-nav.addEventListener('mouseover', function (e) {
-  //Guard Clause
-  if (!e.target.classList.contains('nav__link')) return;
-
-  document.querySelectorAll('.nav__link').forEach(function (el) {
-    if (el.dataset.number !== e.target.dataset.number) {
-      el.style.opacity = 0.5;
-      document.querySelector('.nav__logo').style.opacity = 0.5;
-    }
+const headerCallbackObs = function (entries, observer) {
+  entries.forEach(function (entry) {
+    console.log(entry);
+    if (!entry.isIntersecting) nav.classList.add('sticky');
+    else nav.classList.remove('sticky');
   });
+};
+
+const headerObserver = new IntersectionObserver(headerCallbackObs, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
 });
 
-nav.addEventListener('mouseleave', function () {
-  document.querySelectorAll('.nav__link').forEach(function (el) {
-    el.style.opacity = 1;
-  });
-
-  document.querySelector('.nav__logo').style.opacity = 1;
-});
+headerObserver.observe(header);

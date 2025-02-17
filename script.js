@@ -12,6 +12,7 @@ const navLinks = document.querySelector('.nav__links');
 const nav = document.querySelector('.nav');
 const section1 = document.querySelector('#section--1');
 const header = document.querySelector('.header');
+const featuresImg = document.querySelectorAll('.features__img');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -64,7 +65,7 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const headerCallbackObs = function (entries, observer) {
   entries.forEach(function (entry) {
-    console.log(entry);
+    // console.log(entry);
     if (!entry.isIntersecting) nav.classList.add('sticky');
     else nav.classList.remove('sticky');
   });
@@ -77,3 +78,5 @@ const headerObserver = new IntersectionObserver(headerCallbackObs, {
 });
 
 headerObserver.observe(header);
+
+//LAZY IMAGE

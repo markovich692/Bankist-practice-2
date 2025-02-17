@@ -35,7 +35,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 //Implements smooth scrolling
-
 //Nav links
 navLinks.addEventListener('click', function (e) {
   e.preventDefault();
@@ -44,20 +43,45 @@ navLinks.addEventListener('click', function (e) {
 
   const scrollToSection = e.target.getAttribute('href');
 
-  console.log(scrollToSection);
-  console.log(document.querySelector(scrollToSection));
-
   document
     .querySelector(scrollToSection)
     .scrollIntoView({ behavior: 'smooth' });
 });
 
-//Learn more
-
+//Learn more button
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault;
 
   section1.scrollIntoView({
     behavior: 'smooth',
   });
+});
+
+//Implements nice effect on hover of the nav links
+const nav = document.querySelector('.nav');
+
+//Adds data attributes to the nav links
+document.querySelectorAll('.nav__link').forEach(function (el, i) {
+  el.setAttribute('data-number', i);
+});
+
+//Change the opacity of the links on hover
+nav.addEventListener('mouseover', function (e) {
+  //Guard Clause
+  if (!e.target.classList.contains('nav__link')) return;
+
+  document.querySelectorAll('.nav__link').forEach(function (el) {
+    if (el.dataset.number !== e.target.dataset.number) {
+      el.style.opacity = 0.5;
+      document.querySelector('.nav__logo').style.opacity = 0.5;
+    }
+  });
+});
+
+nav.addEventListener('mouseleave', function () {
+  document.querySelectorAll('.nav__link').forEach(function (el) {
+    el.style.opacity = 1;
+  });
+
+  document.querySelector('.nav__logo').style.opacity = 1;
 });

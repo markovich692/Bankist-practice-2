@@ -80,3 +80,23 @@ const headerObserver = new IntersectionObserver(headerCallbackObs, {
 headerObserver.observe(header);
 
 //LAZY IMAGE
+
+const displayImg = function (entries, observer) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      const sourceData = entry.target.dataset.src;
+      entry.target.src = sourceData;
+
+      entry.target.addEventListener('load', function () {
+        entry.target.classList.remove('lazy-img');
+      });
+    }
+  });
+};
+
+const imgObserver = new IntersectionObserver(displayImg, {
+  root: null,
+  threshold: 0,
+});
+
+featuresImg.forEach(img => imgObserver.observe(img));

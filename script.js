@@ -103,21 +103,16 @@ featuresImg.forEach(img => imgObserver.observe(img));
 
 //TAB
 const operationsTabs = document.querySelectorAll('.operations__tab');
+const operationsContent = document.querySelectorAll('.operations__content');
 
 operationsTabs.forEach(function (tab) {
-  //Remove the active tab class from all tabs
-  tab.classList.remove('operations__tab--active');
-
   tab.addEventListener('click', function (e) {
-    console.log(e.target);
+    operationsTabs.forEach(function (tab) {
+      tab.classList.remove('operations__tab--active');
+    });
+
     e.target
       .closest('.operations__tab')
       .classList.add('operations__tab--active');
-
-    operationsTabs.forEach(function (tab) {
-      if (tab.dataset.tab !== e.target.dataset.tab) {
-        tab.classList.remove('operations__tab--active');
-      }
-    });
   });
 });

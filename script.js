@@ -102,3 +102,16 @@ const imgObserver = new IntersectionObserver(displayImg, {
 featuresImg.forEach(img => imgObserver.observe(img));
 
 //TAB
+const operationsTabs = document.querySelectorAll('.operations__tab');
+
+operationsTabs.forEach(function (tab) {
+  //Remove the active tab class from all tabs
+  tab.classList.remove('operations__tab--active');
+
+  tab.addEventListener('click', function (e) {
+    console.log(e.target);
+    e.target
+      .closest('.operations__tab')
+      .classList.add('operations__tab--active');
+  });
+});

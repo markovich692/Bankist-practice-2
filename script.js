@@ -100,3 +100,5 @@ const imgObserver = new IntersectionObserver(displayImg, {
 });
 
 featuresImg.forEach(img => imgObserver.observe(img));
+
+//TAB

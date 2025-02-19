@@ -107,6 +107,8 @@ const operationsContent = document.querySelectorAll('.operations__content');
 
 operationsTabs.forEach(function (tab) {
   tab.addEventListener('click', function (e) {
+    const dataTab = e.target.closest('.operations__tab').dataset.tab;
+
     operationsTabs.forEach(function (tab) {
       tab.classList.remove('operations__tab--active');
     });
@@ -114,5 +116,12 @@ operationsTabs.forEach(function (tab) {
     e.target
       .closest('.operations__tab')
       .classList.add('operations__tab--active');
+
+    operationsContent.forEach(function (content) {
+      content.classList.remove('operations__content--active');
+      if (content.classList.contains(`operations__content--${dataTab}`)) {
+        content.classList.add('operations__content--active');
+      }
+    });
   });
 });

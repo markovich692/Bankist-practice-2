@@ -113,5 +113,11 @@ operationsTabs.forEach(function (tab) {
     e.target
       .closest('.operations__tab')
       .classList.add('operations__tab--active');
+
+    operationsTabs.forEach(function (tab) {
+      if (tab.dataset.tab !== e.target.dataset.tab) {
+        tab.classList.remove('operations__tab--active');
+      }
+    });
   });
 });

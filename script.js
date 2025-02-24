@@ -125,3 +125,17 @@ operationsTabs.forEach(function (tab) {
     });
   });
 });
+
+//SLIDER
+
+const slides = document.querySelectorAll('.slide');
+
+let transform = 0;
+
+slides.forEach(function (slide, index) {
+  slide.style.scale = 0.15;
+
+  slide.style.transform = `translateX(${transform}%)`;
+
+  transform += 100;
+});

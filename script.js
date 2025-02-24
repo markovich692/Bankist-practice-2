@@ -129,7 +129,8 @@ operationsTabs.forEach(function (tab) {
 //SLIDER
 
 const slides = document.querySelectorAll('.slide');
-
+const sliderLeft = document.querySelector('.slider__btn--left');
+const sliderRight = document.querySelector('.slider__btn--right');
 let transform = 0;
 
 slides.forEach(function (slide, index) {
